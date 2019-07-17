@@ -1,0 +1,46 @@
+server:
+  port: 8080
+
+## spring
+spring:
+  profiles:
+    active: dev
+  # spring cloud service name
+  application:
+    name: demo
+  # 数据源配置
+  datasource:
+    druid:
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      test-on-borrow: true
+      stat-view-servlet.allow: true
+      web-stat-filter:
+        enabled: false  # set false for mockmvc
+      filters: slf4j    # 打开sql打印功能
+    type: com.alibaba.druid.pool.DruidDataSource
+
+## Mybatis Config
+mybatis:
+  #  config-location: classpath:META-INF/mybatis-config.xml
+  # Packages to search for type aliases. (Package delimiters are ",; \t\n")
+  type-aliases-package: com.example.demo.model.dto
+  # Locations of Mapper xml config file.
+  mapper-locations: classpath:META-INF/mappers/**/*.xml
+  # Configuration
+  configuration:
+    # mapUnderscoreToCamelCase
+    map-underscore-to-camel-case: true
+
+
+---
+#开发环境配置
+spring:
+  profiles: dev
+  # datasource
+  datasource:
+    url: jdbc:mysql://localhost:3306/demodb?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: asdASD123
