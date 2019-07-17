@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.mapper.DemoDbMapper" >
+    <resultMap id="table1Result" type="com.example.demo.model.dto.Table1Dto">
+        <result column="id" property="id" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="code" property="code" jdbcType="VARCHAR" />
+        <result column="desc" property="desc" jdbcType="VARCHAR" />
+
+        <result column="create_at" property="createAt" jdbcType="DATE" />
+        <result column="update_at" property="updateAt" jdbcType="DATE" />
+
+    </resultMap>
+    <select id="getAllTable1Data" resultMap="table1Result">
+        select id,name,code,`desc`,create_at,update_at
+        from table1
+        order by name
+    </select>
+
+    <select id="queryTable1Data" resultMap="table1Result">
+        select id,name,code,`desc`,create_at,update_at
+        from table1
+        <where>
+            <if test="name != null and name!=''">
+                and name = #{name}
+            </if>
+            <if test="code != null and code!=''">
+                and code = #{code}
+            </if>
+        </where>
+        order by name
+    </select>
+</mapper>

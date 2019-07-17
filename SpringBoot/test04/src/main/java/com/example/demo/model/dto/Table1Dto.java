@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class Test1Dto {
+public class Table1Dto {
     private String id;
     private String name;
     private String code;
