@@ -1,8 +1,7 @@
 package com.example.demo;
 
 import lombok.extern.java.Log;
-import org.influxdb.InfluxDB;
-import org.influxdb.dto.Point;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
